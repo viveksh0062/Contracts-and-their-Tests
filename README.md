@@ -31,9 +31,6 @@ Run tests using:
 ```bash
 forge test -vv
 📁 Folder Structure
-bash
-Copy
-Edit
 .
 ├── src/
 │   ├── Allowance.sol
