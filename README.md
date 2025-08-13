@@ -80,4 +80,4 @@ Cyfrin Updraft
 OpenZeppelin Patterns
 
 📜 License
-This project is licensed under the MIT License. Feel free to use, learn from, or build upon it
+This project is licensed under the MIT License. Feel free to use, learn from, or build upon it.
