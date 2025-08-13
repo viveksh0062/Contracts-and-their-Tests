@@ -20,7 +20,7 @@ contract SimpleEscrow {
 
         isApproved = true;
 
-        (bool sent, ) = payee.call{value: address(this).balance}("");
+        (bool sent,) = payee.call{value: address(this).balance}("");
         require(sent, "Transfer failed");
     }
 }

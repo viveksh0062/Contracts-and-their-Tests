@@ -22,11 +22,7 @@ contract VaultTest is Test {
         vm.prank(user);
         vault.deposit{value: 2 ether}();
 
-        assertEq(
-            vault.balances(user),
-            2 ether,
-            "Deposit did not update balance"
-        );
+        assertEq(vault.balances(user), 2 ether, "Deposit did not update balance");
     }
 
     function testWithdrawDecreasesUserBalance() public {
@@ -36,11 +32,7 @@ contract VaultTest is Test {
         vm.prank(user);
         vault.withdraw(1 ether);
 
-        assertEq(
-            vault.balances(user),
-            2 ether,
-            "Withdraw did not decrease balance"
-        );
+        assertEq(vault.balances(user), 2 ether, "Withdraw did not decrease balance");
     }
 
     function testWithdrawFailsWhenInsufficientBalance() public {
@@ -74,10 +66,6 @@ contract VaultTest is Test {
         vault.sweepFunds(address(this));
 
         uint256 balanceAfter = address(this).balance;
-        assertGt(
-            balanceAfter,
-            balanceBefore,
-            "Sweep did not send funds to owner"
-        );
+        assertGt(balanceAfter, balanceBefore, "Sweep did not send funds to owner");
     }
 }

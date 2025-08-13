@@ -17,7 +17,7 @@ contract MultiOwnerWallet {
 
     modifier onlyOwner() {
         bool isOwner = false;
-        for (uint i = 0; i < owners.length; i++) {
+        for (uint256 i = 0; i < owners.length; i++) {
             if (msg.sender == owners[i]) {
                 isOwner = true;
                 break;
@@ -54,14 +54,12 @@ contract MultiOwnerWallet {
 
         if (t.approvals >= requiredApprovals) {
             t.sent = true;
-            (bool success, ) = t.to.call{value: t.amount}("");
+            (bool success,) = t.to.call{value: t.amount}("");
             require(success, "Transfer failed");
         }
     }
 
-    function getTransfer(
-        uint256 index
-    )
+    function getTransfer(uint256 index)
         external
         view
         returns (address to, uint256 amount, uint256 approvals, bool sent)

@@ -31,7 +31,7 @@ contract EtherSplitter {
             address recipient = recipients[i];
             uint256 shareAmount = (balance * shares[recipient]) / 100;
 
-            (bool sent, ) = recipient.call{value: shareAmount}("");
+            (bool sent,) = recipient.call{value: shareAmount}("");
             require(sent, "Transfer failed");
         }
     }

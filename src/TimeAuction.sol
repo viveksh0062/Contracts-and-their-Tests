@@ -40,7 +40,7 @@ contract TimeAuction {
 
         pendingReturns[msg.sender] = 0;
 
-        (bool sent, ) = msg.sender.call{value: amount}("");
+        (bool sent,) = msg.sender.call{value: amount}("");
         require(sent, "Withdraw failed");
     }
 
@@ -50,7 +50,7 @@ contract TimeAuction {
 
         ended = true;
 
-        (bool sent, ) = seller.call{value: highestBid}("");
+        (bool sent,) = seller.call{value: highestBid}("");
         require(sent, "Transfer to seller failed");
 
         emit AuctionEnded(highestBidder, highestBid);

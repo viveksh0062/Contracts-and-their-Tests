@@ -20,9 +20,7 @@ contract TimeLockedWalletTest is Test {
         vm.prank(user);
         wallet.deposit{value: 2 ether}(1 days);
 
-        TimeLockedWallet.Deposit[] memory userDeposits = wallet.getDeposits(
-            user
-        );
+        TimeLockedWallet.Deposit[] memory userDeposits = wallet.getDeposits(user);
         assertEq(userDeposits.length, 1);
         assertEq(userDeposits[0].amount, 2 ether);
     }
@@ -44,9 +42,7 @@ contract TimeLockedWalletTest is Test {
         vm.prank(user);
         wallet.withdraw(0);
 
-        TimeLockedWallet.Deposit[] memory userDeposits = wallet.getDeposits(
-            user
-        );
+        TimeLockedWallet.Deposit[] memory userDeposits = wallet.getDeposits(user);
         assertTrue(userDeposits[0].withdrawn);
     }
 

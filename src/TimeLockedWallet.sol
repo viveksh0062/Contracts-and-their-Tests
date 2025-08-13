@@ -46,7 +46,7 @@ contract TimeLockedWallet {
         require(block.timestamp >= userDeposit.unlockTime, "Too early");
         userDeposit.withdrawn = true;
 
-        (bool sent, ) = msg.sender.call{value: userDeposit.amount}("");
+        (bool sent,) = msg.sender.call{value: userDeposit.amount}("");
         require(sent, "Transfer failed");
 
         emit Withdrawn(msg.sender, userDeposit.amount);
@@ -62,9 +62,7 @@ contract TimeLockedWallet {
         emit RemovedFromBlacklist(user);
     }
 
-    function getDeposits(
-        address user
-    ) external view returns (Deposit[] memory) {
+    function getDeposits(address user) external view returns (Deposit[] memory) {
         return deposits[user];
     }
 }

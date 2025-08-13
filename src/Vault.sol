@@ -25,13 +25,13 @@ contract Vault is ReentrancyGuard {
     function withdraw(uint256 amount) external nonReentrant {
         require(balances[msg.sender] >= amount, "Insufficient balance");
         balances[msg.sender] -= amount;
-        (bool sent, ) = msg.sender.call{value: amount}("");
+        (bool sent,) = msg.sender.call{value: amount}("");
         require(sent, "Transfer failed");
     }
 
     function sweepFunds(address to) external onlyOwner {
         uint256 amount = address(this).balance;
-        (bool sent, ) = to.call{value: amount}("");
+        (bool sent,) = to.call{value: amount}("");
         require(sent, "Sweep failed");
     }
 }

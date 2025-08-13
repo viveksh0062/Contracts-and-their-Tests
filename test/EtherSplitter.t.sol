@@ -32,7 +32,7 @@ contract EtherSplitterTest is Test {
         uint256 amount = 2 ether;
 
         // Send ETH to trigger receive()
-        (bool success, ) = address(splitter).call{value: amount}("");
+        (bool success,) = address(splitter).call{value: amount}("");
         require(success, "Transfer failed");
 
         assertEq(alice.balance, 1 ether); // 50%

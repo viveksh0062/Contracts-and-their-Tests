@@ -36,7 +36,7 @@ contract AllowanceWallet is ReentrancyGuard {
 
         allowance[msg.sender] -= amount;
 
-        (bool sent, ) = msg.sender.call{value: amount}("");
+        (bool sent,) = msg.sender.call{value: amount}("");
         require(sent, "Withdraw failed");
 
         emit Withdrawn(msg.sender, amount);

@@ -40,7 +40,7 @@ contract MultiOwnerWalletTest is Test {
         wallet.approveTransfer(0);
 
         // Not enough approvals yet, should not send
-        (, , uint256 approvals1, bool sent1) = wallet.getTransfer(0);
+        (,, uint256 approvals1, bool sent1) = wallet.getTransfer(0);
         assertEq(approvals1, 1);
         assertFalse(sent1);
 
@@ -49,7 +49,7 @@ contract MultiOwnerWalletTest is Test {
         wallet.approveTransfer(0);
 
         // Now it should send
-        (, , uint256 approvals2, bool sent2) = wallet.getTransfer(0);
+        (,, uint256 approvals2, bool sent2) = wallet.getTransfer(0);
         assertEq(approvals2, 2);
         assertTrue(sent2);
     }
